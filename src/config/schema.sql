@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS shestyle;
-USE shestyle;
-
 -- Users Table
 CREATE TABLE IF NOT EXISTS Users (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -1,30 +1,27 @@
+require('dotenv').config(); // Load environment variables from .env
 const mysql = require('mysql2/promise');
-const fs = require('fs');
-const path = require('path');
 
 async function initDatabase() {
-  try {
-    const connection = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: 'yourpassword',
-      database: 'your_database'
-    });
+    try {
+        console.log("DB Config:", process.env.DB_USER, process.env.DB_PASSWORD ? "Has Password" : "No Password"); // Debug
 
-    console.log('Connected to MySQL!');
+        const connection = await mysql.createConnection({
+            host: process.env.DB_HOST || 'localhost',
+            user: process.env.DB_USER || 'root',
+            password: process.env.DB_PASSWORD || '',  // Ensure it reads the password
+            database: process.env.DB_NAME || 'shestyle_db',
+            port: process.env.DB_PORT || 3306
+        });
 
-    // Read and execute the schema SQL file
-    const schemaPath = path.join(__dirname, 'schema.sql');
-    const schema = fs.readFileSync(schemaPath, 'utf8');
+        console.log("Connected to MySQL!");
 
-    await connection.query(schema);  // Execute the schema SQL
-
-    console.log('Database initialized successfully!');
-    
-    await connection.end();
-  } catch (err) {
-    console.error('Error during database initialization:', err.stack);
-  }
+        await connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
+        console.log("Database created or already exists.");
+        
+        await connection.end();
+    } catch (error) {
+        console.error("Error during database initialization:", error);
+    }
 }
 
 initDatabase();
