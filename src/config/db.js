@@ -1,12 +1,12 @@
 const sequelize = require('./sequelize');
-const User = require('./models/User');
-const Category = require('./models/Category');
-const Product = require('./models/Product');
-const Cart = require('./models/Cart');
-const Wishlist = require('./models/Wishlist');
-const Order = require('./models/Order');
-const OrderItem = require('./models/OrderItem');
-const Review = require('./models/Review');
+const User = require('../models/User');
+const Category = require('../models/Category');
+const Product = require('../models/Product');
+const Cart = require('../models/Cart');
+const Wishlist = require('../models/Wishlist');
+const Order = require('../models/Order');
+const OrderItem = require('../models/OrderItem');
+const Review = require('../models/Review');
 
 // Define Associations
 User.hasMany(Order, { foreignKey: 'user_id' });
