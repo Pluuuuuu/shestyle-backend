@@ -1,5 +1,5 @@
 const express = require('express');
-const { sequelize, User, Product } = require('./db');
+const { sequelize, User, Product } = require('./config/db');
 
 const app = express();
 app.use(express.json());

@@ -10,7 +10,9 @@ exports.signup = async (req, res) => {
         // Check if user already exists
         const [existingUser] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
 
-        if (existingUser.length > 0) {
+        // if (existingUser.length > 0) {
+        if (existingUser[0].length > 0) { //This ensures the correct length check is done on the result set
+
             return res.status(400).json({ message: 'User already exists' });
         }
 

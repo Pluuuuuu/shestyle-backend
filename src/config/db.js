@@ -9,9 +9,12 @@ const OrderItem = require('../models/OrderItem');
 const Review = require('../models/Review');
 
 // Define Associations
+
+// A User can have many Orders. ; An Order belongs to a User.
 User.hasMany(Order, { foreignKey: 'user_id' });
 Order.belongsTo(User, { foreignKey: 'user_id' });
 
+// A User can have many Cart items. ; Each Cart item belongs to a single User.
 User.hasMany(Cart, { foreignKey: 'user_id' });
 Cart.belongsTo(User, { foreignKey: 'user_id' });
 
