@@ -22,7 +22,7 @@ exports.signup = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
-//module.exports = { signup };
+
 
 // Login endpoint
 exports.login = async (req, res) => {
@@ -49,7 +49,8 @@ exports.login = async (req, res) => {
     }
 };
 
-//module.exports = { login };
+//module.exports = { signup };
+module.exports = { signup, login };
 
 
 
