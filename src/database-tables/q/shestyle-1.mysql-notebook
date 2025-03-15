@@ -30,7 +30,7 @@
                 "lineNumber": 7,
                 "column": 1
             },
-            "firstPositionDeltaTop": -23
+            "firstPositionDeltaTop": 77
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -77,8 +77,8 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "dbd17026-572f-4e9f-db49-a432ba547938",
-                        "65aaa7e0-fd93-4c8a-d1a3-0db6b0fdb3ba"
+                        "7faa9023-896c-4d91-c0ee-c715e2d540ee",
+                        "44b68f9f-d0cd-467a-eed1-212c9d20bd0f"
                     ]
                 },
                 "currentHeight": 286.58331298828125,
@@ -134,7 +134,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "dbd17026-572f-4e9f-db49-a432ba547938",
+                    "resultId": "7faa9023-896c-4d91-c0ee-c715e2d540ee",
                     "rows": [
                         {
                             "0": "databasetry"
@@ -187,7 +187,7 @@
                 },
                 {
                     "tabId": "1",
-                    "resultId": "65aaa7e0-fd93-4c8a-d1a3-0db6b0fdb3ba",
+                    "resultId": "44b68f9f-d0cd-467a-eed1-212c9d20bd0f",
                     "rows": [
                         {
                             "0": "carts"
@@ -254,7 +254,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "9dfd3cb5-d9a8-4820-9d57-a2aa7ddaa0a2"
+                        "1d62189e-1685-45fb-d58d-1e9c14667291"
                     ]
                 },
                 "currentHeight": 292,
@@ -274,7 +274,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "9dfd3cb5-d9a8-4820-9d57-a2aa7ddaa0a2",
+                    "resultId": "1d62189e-1685-45fb-d58d-1e9c14667291",
                     "rows": [
                         {
                             "0": "id",
@@ -472,7 +472,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "264754dd-cee4-4c78-926e-f0a5982bc67c"
+                        "8a787574-dde0-466b-e514-e39d2abd2916"
                     ]
                 },
                 "currentHeight": 259,
@@ -492,7 +492,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "264754dd-cee4-4c78-926e-f0a5982bc67c",
+                    "resultId": "8a787574-dde0-466b-e514-e39d2abd2916",
                     "rows": [
                         {
                             "0": "id",
@@ -680,7 +680,7 @@
                             "length": 0
                         },
                         "contentStart": 0,
-                        "state": 0
+                        "state": 3
                     }
                 ]
             },
