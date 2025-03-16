@@ -18,12 +18,13 @@ exports.signup = async (req, res) => {
         //console.log("Hashed Password:", hashedPassword); // Log this to confirm it's hashed
         // Create new user
         const newUser = await User.create({ name, email,password, role });
-        // Send response with the token
+        // Send response with the token  
         res.status(201).json({ message: 'User registered successfully', user: newUser });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
 };
+// Signup endpoint | Registration
 
 
 // Login endpoint
