@@ -3,6 +3,23 @@ const db = require('../config/db'); // Import db.js to ensure associations are l
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 
+// Add a product (Admin only)
+const addProduct = async (req, res) => {
+  const { name, description, price, stock, categoryId } = req.body;
+  try {
+    const product = await Product.create({
+      name,
+      description,
+      price,
+      stock,
+      category_id: categoryId
+    });
+    res.status(201).json(product);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
 // Get all products (For customers)
 const getAllProducts = async (req, res) => {
   try {
@@ -41,23 +58,6 @@ const getProductsByCategory = async (req, res) => {
     res.json(products);
   } catch (error) {
     res.status(500).json({ message: 'Failed to retrieve products by category', error });
-  }
-};
-
-// Add a product (Admin only)
-const addProduct = async (req, res) => {
-  const { name, description, price, stock, categoryId } = req.body;
-  try {
-    const product = await Product.create({
-      name,
-      description,
-      price,
-      stock,
-      category_id: categoryId
-    });
-    res.status(201).json(product);
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error });
   }
 };
 

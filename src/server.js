@@ -9,7 +9,13 @@ const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
+
 app.use(express.json()); // Middleware for parsing JSON requests
+
+app.use((req, res, next) => {
+  console.log(`${req.method} request to ${req.url}`);
+  next();
+});
 
 // API Test Route
 app.get('/', (req, res) => res.send('API is working!'));
