@@ -1,7 +1,18 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
+const hashPassword = (password, callback) => {
+  const saltRounds = 10;
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) {
+      console.error("Error hashing password:", err);
+      callback(err, null);
+    } else {
+      callback(null, hash);
+    }
+  });
+};
 
 const User = sequelize.define('User', {
   id: {
@@ -31,15 +42,26 @@ const User = sequelize.define('User', {
   }
 }, {
   hooks: {
-      beforeCreate: async (user) => {
-          const salt = await bcrypt.genSalt(10);
-          user.password = await bcrypt.hash(user.password, salt);
-      },
-      beforeUpdate: async (user) => {
-        if (user.changed('password')) { // Only hash if password is changed
-            const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(user.password, salt);
-        }
+    beforeCreate: async (user) => {
+      return new Promise((resolve, reject) => {
+        hashPassword(user.password, (err, hashedPassword) => {
+          if (err) return reject(err);
+          user.password = hashedPassword;
+          resolve();
+        });
+      });
+    },
+
+    beforeUpdate: async (user) => {
+      if (user.changed('password')) {
+        return new Promise((resolve, reject) => {
+          hashPassword(user.password, (err, hashedPassword) => {
+            if (err) return reject(err);
+            user.password = hashedPassword;
+            resolve();
+          });
+        });
+      }
     }
   }
 });

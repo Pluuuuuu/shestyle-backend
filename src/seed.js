@@ -49,13 +49,21 @@
 // };
 
 // seedDatabase();
+// const bcrypt = require('bcryptjs');
+
+// const storedHash = "$2b$10$u.gQ5EWo/iSHMOuqN8sWZeYeR7mDLyqvnnclj2BAxx7WxNSThZQk2"; // The hashed password from your DB
+// const plainPassword = "password123"; // Replace with the password you're trying to check
+
+// bcrypt.compare(plainPassword.trim(), storedHash.trim()).then(isMatch => {
+//     console.log(isMatch); // Should log 'true' if the password is correct
+//   }).catch(err => console.error(err));
+
 const bcrypt = require('bcryptjs');
 
-const storedHash = "$2b$10$u.gQ5EWo/iSHMOuqN8sWZeYeR7mDLyqvnnclj2BAxx7WxNSThZQk2"; // The hashed password from your DB
-const plainPassword = "password123"; // Replace with the password you're trying to check
+const password = "password123"; // Replace with your actual password
 
-bcrypt.compare(plainPassword.trim(), storedHash.trim()).then(isMatch => {
-    console.log(isMatch); // Should log 'true' if the password is correct
-  }).catch(err => console.error(err));
+bcrypt.hash(password, 10, (err, newHash) => {
+  if (err) return console.error("Error hashing:", err);
 
-  
+  console.log("Newly Generated Hash:", newHash);
+});
