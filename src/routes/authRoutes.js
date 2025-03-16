@@ -14,6 +14,12 @@ router.post('/signup', async (req, res) => {
             return res.status(400).json({ message: "All fields are required" });
         }
 
+            // Check if user already exists
+        const existingUser = await User.findOne({ where: { email } });
+        if (existingUser) {
+        return res.status(400).json({ message: "Email already in use" });
+        }
+         // Hash the password before saving
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log("Hashed password:", hashedPassword);
 
@@ -25,7 +31,7 @@ router.post('/signup', async (req, res) => {
 
     } catch (error) {
         console.error("Error in /signup:", error);
-        res.status(500).json({ message: "Server error", error: error.message });
+        res.status(500).json({ message: "Server error/signup", error: error.message });
     }
 });
 
