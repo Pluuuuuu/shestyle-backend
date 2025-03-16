@@ -1,4 +1,4 @@
-// const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcrypt');
 // const { User } = require('./models');  // Adjust the path based on where your User model is located
 
 // // Function to hash password
@@ -49,13 +49,28 @@
 // };
 
 // seedDatabase();
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcrypt');
 
-const storedHash = "$2b$10$u.gQ5EWo/iSHMOuqN8sWZeYeR7mDLyqvnnclj2BAxx7WxNSThZQk2"; // The hashed password from your DB
-const plainPassword = "password123"; // Replace with the password you're trying to check
+// const storedHash = "$2b$10$9kMYILAqnNKKXjFLUkPEp.9ro2mu1ef7szDTNG7vbCGkxSXIxLgYu"; // The hashed password from your DB
+// const plainPassword = "Admin1234"; // Replace with the password you're trying to check
 
-bcrypt.compare(plainPassword.trim(), storedHash.trim()).then(isMatch => {
-    console.log(isMatch); // Should log 'true' if the password is correct
-  }).catch(err => console.error(err));
+// async function checkPassword() {
+//     try {
+//         const isMatch = await bcrypt.compare(plainPassword.trim(), storedHash.trim());
+//         console.log(isMatch); // Should log 'true' if the password is correct
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
 
-  
+// checkPassword();
+const bcrypt = require('bcrypt');
+const plainPassword = "Admin123";  // The password you're comparing
+
+bcrypt.hash(plainPassword, 10, (err, hash) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log("Rehashed Password:", hash);
+    }
+});
