@@ -13,13 +13,13 @@
     "viewState": {
         "cursorState": [
             {
-                "inSelectionMode": false,
+                "inSelectionMode": true,
                 "selectionStart": {
-                    "lineNumber": 16,
-                    "column": 1
+                    "lineNumber": 4,
+                    "column": 13
                 },
                 "position": {
-                    "lineNumber": 16,
+                    "lineNumber": 2,
                     "column": 1
                 }
             }
@@ -27,10 +27,10 @@
         "viewState": {
             "scrollLeft": 0,
             "firstPosition": {
-                "lineNumber": 9,
+                "lineNumber": 1,
                 "column": 1
             },
-            "firstPositionDeltaTop": 33
+            "firstPositionDeltaTop": 0
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -53,7 +53,7 @@
                         }
                     ]
                 },
-                "currentHeight": 28,
+                "currentHeight": 122,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -77,8 +77,8 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "55c82020-80af-49d4-e056-e37a35dc7966",
-                        "8d7cd308-8415-41c0-f3c4-45583f2e6deb"
+                        "b4e5b1f8-480b-49e2-c849-50fd6882f977",
+                        "94bc2be1-a402-4d31-a2dc-87cd99dca38c"
                     ]
                 },
                 "currentHeight": 286.58331298828125,
@@ -134,7 +134,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "55c82020-80af-49d4-e056-e37a35dc7966",
+                    "resultId": "b4e5b1f8-480b-49e2-c849-50fd6882f977",
                     "rows": [
                         {
                             "0": "databasetry"
@@ -187,7 +187,7 @@
                 },
                 {
                     "tabId": "1",
-                    "resultId": "8d7cd308-8415-41c0-f3c4-45583f2e6deb",
+                    "resultId": "94bc2be1-a402-4d31-a2dc-87cd99dca38c",
                     "rows": [
                         {
                             "0": "carts"
@@ -254,7 +254,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "0f6f5dc2-b5a7-43a8-b60c-25166ee92a4f"
+                        "28bbdda9-0862-4ae7-8b7a-8dcfb82579e6"
                     ]
                 },
                 "currentHeight": 292,
@@ -274,7 +274,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "0f6f5dc2-b5a7-43a8-b60c-25166ee92a4f",
+                    "resultId": "28bbdda9-0862-4ae7-8b7a-8dcfb82579e6",
                     "rows": [
                         {
                             "0": "id",
@@ -472,7 +472,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "f8571947-56eb-4589-cc2e-9e9e60cbd2c2"
+                        "0d512302-46b1-416b-d56d-07ddbe4d4095"
                     ]
                 },
                 "currentHeight": 259,
@@ -492,7 +492,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "f8571947-56eb-4589-cc2e-9e9e60cbd2c2",
+                    "resultId": "0d512302-46b1-416b-d56d-07ddbe4d4095",
                     "rows": [
                         {
                             "0": "id",
@@ -762,8 +762,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "c0c5c374-7265-4073-ec13-4b1d35ca2fa3",
-                        "4db06c2b-21ec-427d-a2a9-1efe7f47e912"
+                        "63f34ab7-f330-45a9-dae6-b2798a4363ee"
                     ]
                 },
                 "currentHeight": 136,
@@ -792,7 +791,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "c0c5c374-7265-4073-ec13-4b1d35ca2fa3",
+                    "resultId": "63f34ab7-f330-45a9-dae6-b2798a4363ee",
                     "rows": [
                         {
                             "0": 1,
@@ -928,20 +927,6 @@
                     "sql": "\nselect * from users",
                     "updatable": true,
                     "fullTableName": "users"
-                },
-                {
-                    "tabId": "1",
-                    "resultId": "4db06c2b-21ec-427d-a2a9-1efe7f47e912",
-                    "rows": [],
-                    "executionInfo": {
-                        "text": "OK, 0 records retrieved in 0.73ms"
-                    },
-                    "totalRowCount": 0,
-                    "hasMoreRows": false,
-                    "currentPage": 0,
-                    "index": 0,
-                    "sql": "USE shestyle_db",
-                    "updatable": false
                 }
             ]
         },
@@ -953,8 +938,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "685b7b1f-1dee-4858-c6b5-f4661b92cf76",
-                        "a52c41d8-39d9-4807-f1a8-e13da09af8f5"
+                        "bc1c4b1f-3eaf-493e-f579-93bf3ad61fec"
                     ]
                 },
                 "currentHeight": 161,
@@ -983,7 +967,7 @@
             "data": [
                 {
                     "tabId": "1",
-                    "resultId": "685b7b1f-1dee-4858-c6b5-f4661b92cf76",
+                    "resultId": "bc1c4b1f-3eaf-493e-f579-93bf3ad61fec",
                     "rows": [
                         {
                             "0": 1,
@@ -1128,20 +1112,6 @@
                     "sql": "\nselect * from users",
                     "updatable": true,
                     "fullTableName": "users"
-                },
-                {
-                    "tabId": "1",
-                    "resultId": "a52c41d8-39d9-4807-f1a8-e13da09af8f5",
-                    "rows": [],
-                    "executionInfo": {
-                        "text": "OK, 0 records retrieved in 3.78ms"
-                    },
-                    "totalRowCount": 0,
-                    "hasMoreRows": false,
-                    "currentPage": 0,
-                    "index": 0,
-                    "sql": "USE shestyle_db",
-                    "updatable": false
                 }
             ]
         },

@@ -1,28 +1,30 @@
 const express = require('express');
-const { sequelize, User, Product } = require('./config/db');
-const authRoutes = require('./routes/authRoutes');
+const { sequelize } = require('./config/db'); // Importing Sequelize connection
 require('dotenv').config(); // Load environment variables
 
-const app = express();
-app.use(express.json());
+// Importing Routes
+const authRoutes = require('./routes/authRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
+const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
 
+const app = express();
+app.use(express.json()); // Middleware for parsing JSON requests
+
+// API Test Route
 app.get('/', (req, res) => res.send('API is working!'));
 
-app.use(express.json()); // Middleware to parse JSON requests
-app.use('/api/auth', authRoutes); // Mount authentication routes
+// Mount Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
-app.get('/users', async (req, res) => {
-  const users = await User.findAll();
-  res.json(users);
-});
-
-app.get('/products', async (req, res) => {
-  const products = await Product.findAll();
-  res.json(products);
-});
-
+// Start Server After DB Connection
 const PORT = process.env.PORT || 5000;
-sequelize.authenticate().then(() => {
-  console.log('Database connected!');
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}).catch(err => console.error('Database connection error:', err));
+sequelize.authenticate()
+  .then(() => {
+    console.log('Database connected!');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  })
+  .catch(err => console.error('Database connection error:', err));
