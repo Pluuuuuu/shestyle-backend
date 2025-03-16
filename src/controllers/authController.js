@@ -26,40 +26,74 @@ exports.signup = async (req, res) => {
 };
 // Signup endpoint | Registration
 
-
-// Login endpoint
-exports.login = async (req, res) => {
+exports.login = async (req, res)=> {
     try {
         const { email, password } = req.body;
-        console.log('Received login request with email:', email); // Log incoming email
+
+        console.log("Received login request with email:", email);
+        
+        // Find user by email
         const user = await User.findOne({ where: { email } });
-        console.log('User:', user); // Log the user object
 
-        // Check if user exists
         if (!user) {
-            console.log("No user found with this email.");
-            return res.status(400).json({ message: 'Invalid credentials, User not found' });
+            return res.status(401).json({ message: "Invalid credentials, User not found" });
         }
-        // Compare the entered password with the stored hashed password    
-        console.log("Incoming Password:", password); // From req.body
-        console.log("Stored Password Hash:", user.password); // From the database
- 
-        const isMatch = await bcrypt.compare(password.trim(), user.password.trim());
-        console.log('Password Match:', match); // This should be true if the passwords match
 
-        console.log("Password Match:", isMatch); // Add this to check whether bcrypt.compare is returning true or false
+        console.log("Incoming Password (Plain):", password); // Should be plain (e.g., "Admin123")
+        console.log("Stored Password Hash:", user.password); // Should be hashed
+
+        // Compare plain password with hashed password
+        const isMatch = await bcrypt.compare(password, user.password);``
+        console.log("Password Match:", isMatch);
+
         if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid credentials, Wrong Password' });
+            return res.status(401).json({ message: "Invalid credentials, Wrong Password" });
         }
-         // Generate JWT token
-        const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        // // Send response with the token
-        res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+
+        res.json({ message: "Login successful" });
 
     } catch (error) {
-        res.status(500).json({ message: 'Server error' });
+        console.error("Login error:", error);
+        res.status(500).json({ message: "Server error" });
     }
-};
+}
+
+
+
+//qmar edits
+// // Login endpoint
+// exports.login = async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+//         console.log('Received login request with email:', email); // Log incoming email
+//         const user = await User.findOne({ where: { email } });
+//         console.log('User:', user); // Log the user object
+
+//         // Check if user exists
+//         if (!user) {
+//             console.log("No user found with this email.");
+//             return res.status(400).json({ message: 'Invalid credentials, User not found' });
+//         }
+//         // Compare the entered password with the stored hashed password    
+//         console.log("Incoming Password:", password); // From req.body
+//         console.log("Stored Password Hash:", user.password); // From the database
+ 
+//         const isMatch = await bcrypt.compare(password.trim(), user.password.trim());
+//         console.log('Password Match:', match); // This should be true if the passwords match
+
+//         console.log("Password Match:", isMatch); // Add this to check whether bcrypt.compare is returning true or false
+//         if (!isMatch) {
+//             return res.status(400).json({ message: 'Invalid credentials, Wrong Password' });
+//         }
+//          // Generate JWT token
+//         const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+//         // // Send response with the token
+//         res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+
+//     } catch (error) {
+//         res.status(500).json({ message: 'Server error' });
+//     }
+// };
 
 
 
