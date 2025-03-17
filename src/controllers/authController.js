@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
         console.log("Incoming Password:", password); // From req.body
         console.log("Stored Password Hash:", user.password); // From the database
  
-        const isMatch = await bcrypt.compare(password.trim(), user.password.trim());
+        const isMatch = await bcrypt.compare(password, user.password);
 
         console.log("Password Match:", isMatch); // Add this to check whether bcrypt.compare is returning true or false
         if (!isMatch) {
