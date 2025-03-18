@@ -33,24 +33,37 @@ exports.login = async (req, res) => {
 
         console.log("Received login request with email:", email);
         
+        // Step 1: Find the user by email
         const user = await User.findOne({ where: { email } });
 
         if (!user) {
             return res.status(401).json({ message: "Invalid credentials, User not found" });
         }
 
-        console.log("Incoming Password (Plain):", password.trim());
+        console.log("Incoming Password (Plain):", password);
 
         console.log("Stored Password Hash:", user.password);
 
+          // Step 2: Hash the provided password before comparing
+        //   const hashedInputPassword = await bcrypt.hash(password, 10);
+        //   console.log("Hashed Input Password:", hashedInputPassword);
+
+        // Step 3: Compare hashed password from user input with stored hash
         // ✅ Ensure bcrypt compares correctly
-        const isMatch = await bcrypt.compare(password.trim(), user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
 
         console.log("Password Match:", isMatch);
 
         if (!isMatch) {
             return res.status(401).json({ message: "Invalid credentials, Wrong Password" });
         }
+
+        // Step 4: Generate a token for authenticated user (if needed)
+        const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, process.env.JWT_SECRET, {
+            expiresIn: "1h"
+        });
+
+        res.json({ message: "Login successful", token });
 
         res.json({ message: "Login successful" });
 
